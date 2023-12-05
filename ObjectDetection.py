@@ -7,6 +7,6 @@ class ObjectDetection:
         self.model = YOLO(model_path)
 
     def detect_objects(self, frame):
-        results = self.model.predict(frame)
+        results = self.model.predict(frame, conf=0.3)
         boxes = results[0].boxes.xyxy.cpu()
         return boxes
